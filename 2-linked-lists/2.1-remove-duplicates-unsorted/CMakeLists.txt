@@ -1,0 +1,19 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+PROJECT(rmdupunsorted)
+
+SET(BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+
+#ADD_DEFINITIONS("-DDEBUG")
+
+INCLUDE_DIRECTORIES("${BASE_DIR}/../../util")
+
+FILE(GLOB SRC *.c)
+
+#SET(SRC 
+#	${BASE_DIR}/common.c
+#	${BASE_DIR}/rmdupunsorted1.c
+#)
+
+ADD_EXECUTABLE("${PROJECT_NAME}1" ${BASE_DIR}/common.c ${BASE_DIR}/rmdupunsorted1.c )
+ADD_EXECUTABLE("${PROJECT_NAME}2" ${BASE_DIR}/common.c ${BASE_DIR}/rmdupunsorted2.c )
+	
