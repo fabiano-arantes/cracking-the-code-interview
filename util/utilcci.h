@@ -1,7 +1,10 @@
 #include <stdlib.h>
+#include <string.h>
 
 #ifdef DEBUG
-	#define DBG(x, ...) printf(x"\n", __VA_ARGS__)
+	#define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+	#define __DEBUG_HEADER__ "DEBUG : %s:%s() (%d) : "
+	#define DBG(x, ...) printf(__DEBUG_HEADER__ x "\n", __FILENAME__, __FUNCTION__, __LINE__, __VA_ARGS__)
 #else
 	#define DBG(x, ...)
 #endif
