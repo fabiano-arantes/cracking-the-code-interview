@@ -7,5 +7,7 @@ ADD_DEFINITIONS("-DDEBUG")
 
 INCLUDE("${BASE_DIR}/../../util/utilcci.cmake")
 
+SET(CMAKE_C_FLAGS "-g -O0 -Wall")
+
 ADD_EXECUTABLE("${PROJECT_NAME}" ${BASE_DIR}/${PROJECT_NAME}.c ${UTILCCI_SRC})
 	

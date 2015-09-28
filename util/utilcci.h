@@ -14,8 +14,10 @@ typedef struct str_node_int{
 	struct str_node_int *next;
 } node_int;
 
-node_int *new_node_int(const int d, node_int *parent);
+node_int *new_node_int(void);
 
 void fill_linked_list_int(node_int **phead);
 
 void print_linked_list_int(node_int *head);
+
+void erase_linked_list_int(node_int* head);

@@ -1,7 +1,7 @@
 #include "utilcci.h"
 #include <stdio.h>
 
-node_int *new_node_int(const int d, node_int *parent)
+node_int *new_node_int(void)
 {
 	node_int *n = NULL;
 
@@ -12,13 +12,8 @@ node_int *new_node_int(const int d, node_int *parent)
 		return NULL;
 	}
 
-	n->d = d;
+	n->d = 0;
 	n->next = NULL;
-
-	if(parent)
-	{
-		parent->next = n;
-	}
 
 	return n;
 }
@@ -37,7 +32,16 @@ void fill_linked_list_int(node_int **head)
 
 		scanf("%d", &v);
 
-		tmp = new_node_int(v, tmp);
+		if(tmp == NULL)
+		{
+			tmp = new_node_int();
+		}
+		else
+		{
+			tmp->next = new_node_int();
+			tmp = tmp->next;
+		}
+		tmp->d = v;
 
 		if(!*head)
 		{
@@ -63,5 +67,17 @@ void print_linked_list_int(node_int *head)
 		tmp = tmp->next;
 	}
 	printf("\n");
+}
+
+void erase_linked_list_int(node_int* node)
+{
+	node_int* tmp;
+
+	while(node != NULL)
+	{
+		tmp = node->next;
+		free(node);
+		node = tmp;
+	}
 }
 
