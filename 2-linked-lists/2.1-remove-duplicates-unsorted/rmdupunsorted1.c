@@ -1,19 +1,19 @@
 #include <utilcci.h>
 #include <stdio.h>
-#include "common.h"
 
-static node *sorted_list = NULL;
+static node_int *sorted_list = NULL;
 
 int check_duplicate(int value)
 {
-	node *tmp;
-	node *last = NULL;
-	node *n = NULL;
+	node_int *tmp;
+	node_int *last = NULL;
+	node_int *n = NULL;
 
 	if(sorted_list == NULL)
 	{
 		DBG("Creating sorted list: %d", value);
-		sorted_list = new_node(value, NULL);
+		sorted_list = new_node_int();
+		sorted_list->d = value;
 		return 0;
 	}
 
@@ -35,7 +35,8 @@ int check_duplicate(int value)
 		else
 		{
 			DBG("New unique value: %d", value);
-			n = new_node(value, last);
+			n = new_node_int();
+			last->next = n;
 			n->d = value;
 			n->next = tmp;
 
@@ -44,21 +45,22 @@ int check_duplicate(int value)
 	}
 
 	DBG("New unique value: %d", value);
-	n = new_node(value, last);
+	n = new_node_int();
 	n->d = value;
+	last->next = n;
 
 	return 0;
 }
 
 int main(int argc, char * argv[])
 {
-	node *head = NULL;
-	node *n = NULL;
-	node *last = NULL;
+	node_int *head = NULL;
+	node_int *n = NULL;
+	node_int *last = NULL;
 
-	fill_linked_list(&head);
+	fill_linked_list_int(&head);
 
-	print_linked_list(head);
+	print_linked_list_int(head);
 
 	n = head;
 
@@ -82,7 +84,7 @@ int main(int argc, char * argv[])
 		n = n->next;
 	}
 
-	print_linked_list(head);
+	print_linked_list_int(head);
 
 	free(head);
 

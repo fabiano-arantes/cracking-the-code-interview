@@ -1,18 +1,16 @@
 #include <utilcci.h>
 #include <stdio.h>
-#include "common.h"
-
 
 int main(int argc, char * argv[])
 {
-	node *head = NULL;
-	node *first = NULL;
-	node *second = NULL;
-	node *past = NULL;
+	node_int *head = NULL;
+	node_int *first = NULL;
+	node_int *second = NULL;
+	node_int *past = NULL;
 
-	fill_linked_list(&head);
+	fill_linked_list_int(&head);
 
-	print_linked_list(head);
+	print_linked_list_int(head);
 
 	first = head;
 
@@ -45,7 +43,7 @@ int main(int argc, char * argv[])
 		first = first->next;
 	}
 
-	print_linked_list(head);
+	print_linked_list_int(head);
 
 	free(head);
 
